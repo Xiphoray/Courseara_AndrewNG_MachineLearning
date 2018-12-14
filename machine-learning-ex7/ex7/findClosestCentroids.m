@@ -20,8 +20,15 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
+test = zeros(1,K);
+for i = 1:size(X,1)
+  for j = 1:K
+    test(j)=norm(((X(i,:) - centroids(j,:)).^2),1);
+  endfor
+  [s indexoftest] = sort(test);
+  idx(i) = indexoftest(1);
+  test = zeros(1,K);
+endfor
 
 
 
